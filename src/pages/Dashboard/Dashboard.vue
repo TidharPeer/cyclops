@@ -44,8 +44,9 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from "vue";
-  import { MAX_DISPLAYED, Stock } from "@/types/stock";
+  import { ref, onMounted, computed } from "vue";
+  import { MAX_DISPLAYED } from "@/types/stock";
+  import type { Stock } from "@/types/stock";
   import { useStockStore } from "@/stores/stockStore";
   import { fetchStocks } from "@/services/stockService";
   import Chart from "@/components/Chart.vue";
@@ -65,7 +66,7 @@
     await fetchStocks();
   });
 
-  const selectStock = (currStock: Stock) => {
+  const selectStock = (currStock: Stock | null) => {
     selectedStock.value = currStock;
   }
 

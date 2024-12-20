@@ -20,19 +20,19 @@
 <script setup lang="ts">
   import { Line } from 'vue-chartjs';
   import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
-  import { Stock } from '../types/stock';
+  import type { Stock } from '../types/stock';
 
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-  const { stock } = defineProps<{
+  const props = defineProps<{
     stock: Stock
   }>();
 
   const chartData = {
-    labels: stock.historicalData.map(data => data.date),
+    labels: props.stock.historicalData.map(data => data.date),
     datasets: [{
-      label: `${stock.symbol} - ${stock.companyName}`,
-      data: stock.historicalData.map(data => data.price),
+      label: `${props.stock.symbol} - ${props.stock.companyName}`,
+      data: props.stock.historicalData.map(data => data.price),
       tension: 0.2,
     }]
   };
