@@ -29,13 +29,13 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   use: {
     actionTimeout: 0,
-    baseURL: 'http://localhost:5173',
+    baseURL: 'http://localhost:5175',
     trace: 'on-first-retry',
     // headless: !!process.env.CI,
   },
   webServer: {
     command: process.env.CI ? 'vite preview --port 5173' : 'vite dev',
-    port: 5173,
+    port: 5175,
     reuseExistingServer: !process.env.CI,
   },
   projects: [
